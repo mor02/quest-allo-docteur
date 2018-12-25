@@ -118,4 +118,13 @@ public class Adresse {
     public Integer getIdUtilisateur() {
         return idUtilisateur;
     }
+
+	@Override
+	public String toString() {
+		return "Adresse [idAdresse=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville
+				+ ", pays=" + pays + ", principale=" + principale + ", version=" + version + ", idUtilisateur="
+				+ idUtilisateur + "]";
+	}
+    
+    
 }

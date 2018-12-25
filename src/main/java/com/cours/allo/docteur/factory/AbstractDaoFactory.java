@@ -35,6 +35,14 @@ public abstract class AbstractDaoFactory {
      * @return AbstractDaoFactory
      */
     public static AbstractDaoFactory getFactory(FactoryDaoType daoType) {
+        switch (daoType) {
+            case MANUAL_MAP_DAO_FACTORY:
+                return ManualMapDaoFactory.getInstance();
+            case MANUAL_LIST_DAO_FACTORY:
+                return ManualListDaoFactory.getInstance();
+            case MANUAL_ARRAY_DAO_FACTORY:
+                return ManualArrayDaoFactory.getInstance();
+        }
         return null;
     }
 }

@@ -5,6 +5,7 @@
  */
 package com.cours.allo.docteur.main;
 
+import com.cours.allo.docteur.dao.manual.list.impl.ManualListUtilisateurDao;
 import com.cours.allo.docteur.service.IServiceFacade;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,7 +22,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         IServiceFacade serviceFacade = null;
+        ManualListUtilisateurDao manualListUtilisateurDao = ManualListUtilisateurDao.getInstance();
+        System.out.println("USER : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> : ");
+        System.out.println(manualListUtilisateurDao.findAllUtilisateurs());
+        System.out.println("");
+        System.out.println("User by ID : >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> : ");
+        System.out.println(manualListUtilisateurDao.findUtilisateurById(15));
+        System.out.println("");
     }
 }

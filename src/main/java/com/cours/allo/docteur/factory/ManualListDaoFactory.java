@@ -19,9 +19,19 @@ public class ManualListDaoFactory extends AbstractDaoFactory {
     private static final Log log = LogFactory.getLog(ManualListDaoFactory.class);
     private IUtilisateurDao utilisateurDao = null;
     private IAdresseDao adresseDao = null;
+    private  static ManualListDaoFactory instance = null;
+
+    public static ManualListDaoFactory getInstance() {
+        if (instance == null) {
+            instance = new ManualListDaoFactory();
+        }
+        return instance;
+    }
 
     private ManualListDaoFactory() {
         log.debug("--> ************ Initialisation de " + ManualListDaoFactory.class.getSimpleName() + " ************");
+        adresseDao = getAdresseDao();
+        utilisateurDao = getUtilisateurDao();
     }
 
     @Override

@@ -8,6 +8,8 @@ package com.cours.allo.docteur.dao.manual.array.impl;
 import com.cours.allo.docteur.dao.DataSource;
 import com.cours.allo.docteur.dao.IAdresseDao;
 import com.cours.allo.docteur.dao.entities.Adresse;
+import com.cours.allo.docteur.dao.manual.list.impl.ManualListAdresseDao;
+
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,6 +21,14 @@ import org.apache.commons.logging.LogFactory;
 public class ManualArrayAdresseDao extends AbstractArrayDao<Adresse> implements IAdresseDao {
 
     private static final Log log = LogFactory.getLog(ManualArrayAdresseDao.class);
+    private static ManualArrayAdresseDao instance = null;
+
+    public static ManualArrayAdresseDao getInstance() {
+        if (instance == null) {
+            instance = new ManualArrayAdresseDao();
+        }
+        return instance;
+    }
 
     private ManualArrayAdresseDao() {
         super(Adresse.class, DataSource.getInstance().getAdressesArrayDataSource());
@@ -26,11 +36,12 @@ public class ManualArrayAdresseDao extends AbstractArrayDao<Adresse> implements 
 
     @Override
     public List<Adresse> findAllAdresses() {
-        return null;
+    	return DataSource.getInstance().getAdressesListDataSource();
     }
 
     @Override
     public Adresse findAdresseById(int idAdresse) {
+    	
         return null;
     }
 
