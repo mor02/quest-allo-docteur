@@ -5,12 +5,18 @@
  */
 package com.cours.allo.docteur.dao.manual.map.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.cours.allo.docteur.dao.DataSource;
 import com.cours.allo.docteur.dao.IUtilisateurDao;
 import com.cours.allo.docteur.dao.entities.Utilisateur;
-import java.util.List;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -45,9 +51,20 @@ public class ManualMapUtilisateurDao extends AbstractMapDao<Utilisateur> impleme
     }
 
     @Override
-    public List<Utilisateur> findUtilisateursByNom(String nom) {
-        return null;
-    }
+	public List<Utilisateur> findUtilisateursByNom(String nom) {
+		DataSource ds = DataSource.getInstance();
+		Map mapUsers = ds.getUtilisateursMapDataSource();
+		List<Utilisateur> usersList = new ArrayList<>();
+		Set cles = mapUsers.keySet();
+		Iterator it = cles.iterator();
+		while (it.hasNext()) {
+			Utilisateur user = (Utilisateur) it.next();
+			if (nom.equals(user.getNom())) {
+				usersList.add(user);
+			}
+		}
+		return usersList;
+	}
 
     @Override
     public List<Utilisateur> findUtilisateursByCodePostal(String codePostal) {

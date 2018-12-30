@@ -181,4 +181,14 @@ public class Utilisateur {
     public void setAdresses(List<Adresse> adresses) {
         this.adresses = adresses;
     }
+    
+    @Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", civilite=" + civilite + ", prenom=" + prenom
+				+ ", nom=" + nom + ", identifiant=" + identifiant + ", motPasse=" + motPasse + ", numeroTelephone="
+				+ numeroTelephone + ", dateNaissance=" + dateNaissance + ", dateCreation=" + dateCreation
+				+ ", dateModification=" + dateModification + ", actif=" + actif + ", marquerEffacer=" + marquerEffacer
+				+ ", version=" + version + ", adresses=" + adresses + "]";
+	}
+    
 }

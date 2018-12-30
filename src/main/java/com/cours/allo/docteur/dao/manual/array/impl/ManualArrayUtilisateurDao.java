@@ -31,6 +31,13 @@ public class ManualArrayUtilisateurDao extends AbstractArrayDao<Utilisateur> imp
 
     @Override
     public Utilisateur findUtilisateurById(int idUtilisateur) {
+        DataSource ds = DataSource.getInstance();
+        Utilisateur[] usersArray = ds.getUtilisateursArrayDataSource();
+        for(int i=0 ; i<usersArray.length;i++) {
+        	if(usersArray[i].getIdUtilisateur() == idUtilisateur) {
+        		return usersArray[i];
+        	}
+        }
         return null;
     }
 

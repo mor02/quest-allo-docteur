@@ -5,6 +5,8 @@
  */
 package com.cours.allo.docteur.dao.entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author elhad
@@ -118,4 +120,20 @@ public class Adresse {
     public Integer getIdUtilisateur() {
         return idUtilisateur;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+    	return this.getIdAdresse() ==((Adresse) obj).getIdAdresse();
+    }
+    
+    @Override
+    public int hashCode() {
+    	return Objects.hashCode(this.getIdAdresse());
+    }
+    @Override
+	public String toString() {
+		return "Adresse [idAdresse=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville
+				+ ", pays=" + pays + ", principale=" + principale + ", version=" + version + ", idUtilisateur="
+				+ idUtilisateur + "]";
+	}
 }

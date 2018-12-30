@@ -7,8 +7,14 @@ package com.cours.allo.docteur.service;
 
 import com.cours.allo.docteur.dao.IAdresseDao;
 import com.cours.allo.docteur.dao.IUtilisateurDao;
+import com.cours.allo.docteur.dao.entities.Adresse;
+import com.cours.allo.docteur.dao.entities.Utilisateur;
+import com.cours.allo.docteur.exception.CustomException;
 import com.cours.allo.docteur.factory.AbstractDaoFactory;
 import com.cours.allo.docteur.factory.AbstractDaoFactory.FactoryDaoType;
+
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -23,7 +29,7 @@ public class ServiceFacade implements IServiceFacade {
 
     // On liste toutes les DAO : un DAO pour chaque entité (Personne ect ....)
     private IUtilisateurDao utilisateurDao = null;
-
+    
     private IAdresseDao adresseDao = null;
 
     public ServiceFacade() {
@@ -47,4 +53,20 @@ public class ServiceFacade implements IServiceFacade {
     public IAdresseDao getAdresseDao() {
         return adresseDao;
     }
+
+	@Override
+	public List<Utilisateur> findAllUtilisateurs() {
+		return utilisateurDao.findAllUtilisateurs();
+		
+	}
+
+	@Override
+	public Utilisateur findUtilisateurById(int idUtilisateur) {
+		return utilisateurDao.findUtilisateurById(idUtilisateur);
+	}
+
+	@Override
+	public Adresse updateAdresse(Adresse adresse) throws CustomException{
+		return adresseDao.updateAdresse(adresse);
+	}
 }

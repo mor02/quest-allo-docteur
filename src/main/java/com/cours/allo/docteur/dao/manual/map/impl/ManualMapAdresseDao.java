@@ -46,7 +46,12 @@ public class ManualMapAdresseDao extends AbstractMapDao<Adresse> implements IAdr
 
     @Override
     public Adresse createAdresse(Adresse adresse) {
-        return null;
+        DataSource ds = DataSource.getInstance();
+        //TODO : Rajouter le calcul de l'idAdresse ainsi que la gestion des exceptions
+        ds.getAdressesMapDataSource().put(adresse.getIdAdresse(), adresse);
+        
+        
+        return adresse;
     }
 
     @Override

@@ -20,18 +20,35 @@ public class ManualListUtilisateurDao extends AbstractListDao<Utilisateur> imple
 
     private static final Log log = LogFactory.getLog(ManualListUtilisateurDao.class);
 
+    private static ManualListUtilisateurDao instance = null;
+
+    public static ManualListUtilisateurDao getInstance() {
+        if (instance == null) {
+            instance = new ManualListUtilisateurDao();
+        }
+        return instance;
+    }
+    
     private ManualListUtilisateurDao() {
         super(Utilisateur.class, DataSource.getInstance().getUtilisateursListDataSource());
     }
 
     @Override
     public List<Utilisateur> findAllUtilisateurs() {
-        return null;
+    	return DataSource.getInstance().getUtilisateursListDataSource();
     }
 
     @Override
     public Utilisateur findUtilisateurById(int idUtilisateur) {
+    	List<Utilisateur> list = DataSource.getInstance().getUtilisateursListDataSource();
+    	
+    	for (Utilisateur utilisateur : list) {
+    		if ( utilisateur.getIdUtilisateur() == idUtilisateur) {
+    			return utilisateur;
+    		}
+    	}
         return null;
+    
     }
 
     @Override
